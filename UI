@@ -1,0 +1,76 @@
+package projectUI;
+
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.SWT;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.swt.widgets.Composite;
+
+public class window {
+
+	protected Shell shell;
+	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			window window = new window();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Open the window.
+	 */
+	public void open() {
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	/**
+	 * Create contents of the window.
+	 */
+	protected void createContents() {
+		shell = new Shell();
+		shell.setSize(702, 418);
+		shell.setText("SWT Application");
+		
+		Button btnOpenfile = new Button(shell, SWT.NONE);
+		btnOpenfile.setBounds(540, 69, 80, 27);
+		btnOpenfile.setText("openfile");
+		
+		Button btnSavefile = new Button(shell, SWT.NONE);
+		btnSavefile.setBounds(540, 129, 80, 27);
+		btnSavefile.setText("savefile");
+		
+		Button btnRun = new Button(shell, SWT.NONE);
+		btnRun.setBounds(540, 189, 80, 27);
+		btnRun.setText("run");
+		
+		Button btnClearn = new Button(shell, SWT.NONE);
+		btnClearn.setBounds(540, 242, 80, 27);
+		btnClearn.setText("clearn");
+		
+		Composite composite = formToolkit.createComposite(shell, SWT.NONE);
+		composite.setBounds(28, 69, 200, 200);
+		formToolkit.paintBordersFor(composite);
+		
+		Composite composite_1 = formToolkit.createComposite(shell, SWT.NONE);
+		composite_1.setBounds(279, 69, 200, 200);
+		formToolkit.paintBordersFor(composite_1);
+
+	}
+}
